@@ -4,6 +4,10 @@ import * as path from 'path'
 function wrapLog(){
 	const logFilePath = path.resolve(__dirname,'../log/log.txt')
 
+	if(!fs.existsSync(path.resolve(__dirname,'../log'))){
+		fs.mkdirSync(path.resolve(__dirname,'../log'))
+	}
+
 	if(!fs.existsSync(logFilePath)){
 		fs.writeFileSync(logFilePath,'')
 	}

@@ -4,6 +4,9 @@ const fs = require("fs");
 const path = require("path");
 function wrapLog() {
     const logFilePath = path.resolve(__dirname, '../log/log.txt');
+    if (!fs.existsSync(path.resolve(__dirname, '../log'))) {
+        fs.mkdirSync(path.resolve(__dirname, '../log'));
+    }
     if (!fs.existsSync(logFilePath)) {
         fs.writeFileSync(logFilePath, '');
     }
@@ -11,4 +14,4 @@ function wrapLog() {
     process.stdout.write = process.stderr.write = logFileStream.write.bind(logFileStream);
 }
 wrapLog();
-console.log('you mother fucker');
+console.log('little juli');
